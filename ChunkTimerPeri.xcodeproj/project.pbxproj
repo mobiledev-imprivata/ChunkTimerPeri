@@ -13,6 +13,9 @@
 		D68491A61B42CA8F00B58659 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D68491A51B42CA8F00B58659 /* Images.xcassets */; };
 		D68491A91B42CA8F00B58659 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D68491A71B42CA8F00B58659 /* LaunchScreen.xib */; };
 		D68491B51B42CA8F00B58659 /* ChunkTimerPeriTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68491B41B42CA8F00B58659 /* ChunkTimerPeriTests.swift */; };
+		D68491BF1B42CD4200B58659 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68491BE1B42CD4200B58659 /* Logger.swift */; };
+		D68491C11B42CD4A00B58659 /* ChunkUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68491C01B42CD4A00B58659 /* ChunkUtils.swift */; };
+		D68491C31B42CD5800B58659 /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68491C21B42CD5800B58659 /* BluetoothManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,9 @@
 		D68491AE1B42CA8F00B58659 /* ChunkTimerPeriTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChunkTimerPeriTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D68491B31B42CA8F00B58659 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D68491B41B42CA8F00B58659 /* ChunkTimerPeriTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChunkTimerPeriTests.swift; sourceTree = "<group>"; };
+		D68491BE1B42CD4200B58659 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		D68491C01B42CD4A00B58659 /* ChunkUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChunkUtils.swift; sourceTree = "<group>"; };
+		D68491C21B42CD5800B58659 /* BluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +83,9 @@
 		D684919B1B42CA8F00B58659 /* ChunkTimerPeri */ = {
 			isa = PBXGroup;
 			children = (
+				D68491BE1B42CD4200B58659 /* Logger.swift */,
+				D68491C01B42CD4A00B58659 /* ChunkUtils.swift */,
+				D68491C21B42CD5800B58659 /* BluetoothManager.swift */,
 				D684919E1B42CA8F00B58659 /* AppDelegate.swift */,
 				D68491A01B42CA8F00B58659 /* ViewController.swift */,
 				D68491A21B42CA8F00B58659 /* Main.storyboard */,
@@ -213,7 +222,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D68491A11B42CA8F00B58659 /* ViewController.swift in Sources */,
+				D68491C11B42CD4A00B58659 /* ChunkUtils.swift in Sources */,
+				D68491BF1B42CD4200B58659 /* Logger.swift in Sources */,
 				D684919F1B42CA8F00B58659 /* AppDelegate.swift in Sources */,
+				D68491C31B42CD5800B58659 /* BluetoothManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
