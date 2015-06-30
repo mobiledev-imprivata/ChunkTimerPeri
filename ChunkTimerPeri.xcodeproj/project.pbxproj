@@ -1,0 +1,424 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D684919F1B42CA8F00B58659 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D684919E1B42CA8F00B58659 /* AppDelegate.swift */; };
+		D68491A11B42CA8F00B58659 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68491A01B42CA8F00B58659 /* ViewController.swift */; };
+		D68491A41B42CA8F00B58659 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D68491A21B42CA8F00B58659 /* Main.storyboard */; };
+		D68491A61B42CA8F00B58659 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D68491A51B42CA8F00B58659 /* Images.xcassets */; };
+		D68491A91B42CA8F00B58659 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D68491A71B42CA8F00B58659 /* LaunchScreen.xib */; };
+		D68491B51B42CA8F00B58659 /* ChunkTimerPeriTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68491B41B42CA8F00B58659 /* ChunkTimerPeriTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D68491AF1B42CA8F00B58659 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D68491911B42CA8F00B58659 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D68491981B42CA8F00B58659;
+			remoteInfo = ChunkTimerPeri;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D68491991B42CA8F00B58659 /* ChunkTimerPeri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChunkTimerPeri.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D684919D1B42CA8F00B58659 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D684919E1B42CA8F00B58659 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D68491A01B42CA8F00B58659 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D68491A31B42CA8F00B58659 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D68491A51B42CA8F00B58659 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D68491A81B42CA8F00B58659 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		D68491AE1B42CA8F00B58659 /* ChunkTimerPeriTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChunkTimerPeriTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D68491B31B42CA8F00B58659 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D68491B41B42CA8F00B58659 /* ChunkTimerPeriTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChunkTimerPeriTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D68491961B42CA8F00B58659 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D68491AB1B42CA8F00B58659 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D68491901B42CA8F00B58659 = {
+			isa = PBXGroup;
+			children = (
+				D684919B1B42CA8F00B58659 /* ChunkTimerPeri */,
+				D68491B11B42CA8F00B58659 /* ChunkTimerPeriTests */,
+				D684919A1B42CA8F00B58659 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D684919A1B42CA8F00B58659 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D68491991B42CA8F00B58659 /* ChunkTimerPeri.app */,
+				D68491AE1B42CA8F00B58659 /* ChunkTimerPeriTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D684919B1B42CA8F00B58659 /* ChunkTimerPeri */ = {
+			isa = PBXGroup;
+			children = (
+				D684919E1B42CA8F00B58659 /* AppDelegate.swift */,
+				D68491A01B42CA8F00B58659 /* ViewController.swift */,
+				D68491A21B42CA8F00B58659 /* Main.storyboard */,
+				D68491A51B42CA8F00B58659 /* Images.xcassets */,
+				D68491A71B42CA8F00B58659 /* LaunchScreen.xib */,
+				D684919C1B42CA8F00B58659 /* Supporting Files */,
+			);
+			path = ChunkTimerPeri;
+			sourceTree = "<group>";
+		};
+		D684919C1B42CA8F00B58659 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D684919D1B42CA8F00B58659 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D68491B11B42CA8F00B58659 /* ChunkTimerPeriTests */ = {
+			isa = PBXGroup;
+			children = (
+				D68491B41B42CA8F00B58659 /* ChunkTimerPeriTests.swift */,
+				D68491B21B42CA8F00B58659 /* Supporting Files */,
+			);
+			path = ChunkTimerPeriTests;
+			sourceTree = "<group>";
+		};
+		D68491B21B42CA8F00B58659 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D68491B31B42CA8F00B58659 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D68491981B42CA8F00B58659 /* ChunkTimerPeri */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D68491B81B42CA8F00B58659 /* Build configuration list for PBXNativeTarget "ChunkTimerPeri" */;
+			buildPhases = (
+				D68491951B42CA8F00B58659 /* Sources */,
+				D68491961B42CA8F00B58659 /* Frameworks */,
+				D68491971B42CA8F00B58659 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChunkTimerPeri;
+			productName = ChunkTimerPeri;
+			productReference = D68491991B42CA8F00B58659 /* ChunkTimerPeri.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D68491AD1B42CA8F00B58659 /* ChunkTimerPeriTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D68491BB1B42CA8F00B58659 /* Build configuration list for PBXNativeTarget "ChunkTimerPeriTests" */;
+			buildPhases = (
+				D68491AA1B42CA8F00B58659 /* Sources */,
+				D68491AB1B42CA8F00B58659 /* Frameworks */,
+				D68491AC1B42CA8F00B58659 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D68491B01B42CA8F00B58659 /* PBXTargetDependency */,
+			);
+			name = ChunkTimerPeriTests;
+			productName = ChunkTimerPeriTests;
+			productReference = D68491AE1B42CA8F00B58659 /* ChunkTimerPeriTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D68491911B42CA8F00B58659 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = Imprivata;
+				TargetAttributes = {
+					D68491981B42CA8F00B58659 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+					D68491AD1B42CA8F00B58659 = {
+						CreatedOnToolsVersion = 6.3.2;
+						TestTargetID = D68491981B42CA8F00B58659;
+					};
+				};
+			};
+			buildConfigurationList = D68491941B42CA8F00B58659 /* Build configuration list for PBXProject "ChunkTimerPeri" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D68491901B42CA8F00B58659;
+			productRefGroup = D684919A1B42CA8F00B58659 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D68491981B42CA8F00B58659 /* ChunkTimerPeri */,
+				D68491AD1B42CA8F00B58659 /* ChunkTimerPeriTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D68491971B42CA8F00B58659 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D68491A41B42CA8F00B58659 /* Main.storyboard in Resources */,
+				D68491A91B42CA8F00B58659 /* LaunchScreen.xib in Resources */,
+				D68491A61B42CA8F00B58659 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D68491AC1B42CA8F00B58659 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D68491951B42CA8F00B58659 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D68491A11B42CA8F00B58659 /* ViewController.swift in Sources */,
+				D684919F1B42CA8F00B58659 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D68491AA1B42CA8F00B58659 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D68491B51B42CA8F00B58659 /* ChunkTimerPeriTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D68491B01B42CA8F00B58659 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D68491981B42CA8F00B58659 /* ChunkTimerPeri */;
+			targetProxy = D68491AF1B42CA8F00B58659 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D68491A21B42CA8F00B58659 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D68491A31B42CA8F00B58659 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D68491A71B42CA8F00B58659 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D68491A81B42CA8F00B58659 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D68491B61B42CA8F00B58659 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D68491B71B42CA8F00B58659 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D68491B91B42CA8F00B58659 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ChunkTimerPeri/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D68491BA1B42CA8F00B58659 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ChunkTimerPeri/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		D68491BC1B42CA8F00B58659 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ChunkTimerPeriTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChunkTimerPeri.app/ChunkTimerPeri";
+			};
+			name = Debug;
+		};
+		D68491BD1B42CA8F00B58659 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ChunkTimerPeriTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChunkTimerPeri.app/ChunkTimerPeri";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D68491941B42CA8F00B58659 /* Build configuration list for PBXProject "ChunkTimerPeri" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D68491B61B42CA8F00B58659 /* Debug */,
+				D68491B71B42CA8F00B58659 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D68491B81B42CA8F00B58659 /* Build configuration list for PBXNativeTarget "ChunkTimerPeri" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D68491B91B42CA8F00B58659 /* Debug */,
+				D68491BA1B42CA8F00B58659 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D68491BB1B42CA8F00B58659 /* Build configuration list for PBXNativeTarget "ChunkTimerPeriTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D68491BC1B42CA8F00B58659 /* Debug */,
+				D68491BD1B42CA8F00B58659 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D68491911B42CA8F00B58659 /* Project object */;
+}
