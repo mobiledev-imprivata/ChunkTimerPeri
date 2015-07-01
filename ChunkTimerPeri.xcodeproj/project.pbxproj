@@ -165,6 +165,7 @@
 		D68491911B42CA8F00B58659 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = Imprivata;
 				TargetAttributes = {
@@ -426,6 +427,7 @@
 				D68491BA1B42CA8F00B58659 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D68491BB1B42CA8F00B58659 /* Build configuration list for PBXNativeTarget "ChunkTimerPeriTests" */ = {
 			isa = XCConfigurationList;
@@ -434,6 +436,7 @@
 				D68491BD1B42CA8F00B58659 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
