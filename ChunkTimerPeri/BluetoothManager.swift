@@ -21,7 +21,7 @@ class BluetoothManager: NSObject {
     
     private let dechunker = Dechunker()
     
-    private let chunkSize = 40
+    private let chunkSize = 19
     private var pendingResponseChunks = Array< Array<UInt8> >()
     private var nChunks = 0
     private var nChunksSent = 0
@@ -29,6 +29,15 @@ class BluetoothManager: NSObject {
     private var startTime = NSDate()
     
     private var uiBackgroundTaskIdentifier: UIBackgroundTaskIdentifier!
+    
+    /*
+    dispatch_queue_create("responseChunkQueue", DISPATCH_QUEUE_SERIAL)
+    dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)
+    dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+    dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)
+    */
+    
+    private let responseChunkQueue = dispatch_queue_create("responseChunkQueue", DISPATCH_QUEUE_SERIAL)
     
     // See:
     // http://stackoverflow.com/questions/24218581/need-self-to-set-all-constants-of-a-swift-class-in-init
@@ -92,19 +101,19 @@ class BluetoothManager: NSObject {
             return
         }
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+        dispatch_async(responseChunkQueue) {
             self.beginBackgroundTask()
             
             self.nChunksSent = 0
             
-            let delay = self.calculateDelay()
+            let delay = 0.0 // self.calculateDelay()
             let delayStr = String(format: "%.3f", delay)
             log("will send response in \(delayStr) secs")
             
             let timer = NSTimer.scheduledTimerWithTimeInterval(delay, target: self, selector: "sendNextResponseChunk", userInfo: nil, repeats: false)
             NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSDefaultRunLoopMode)
             NSRunLoop.currentRunLoop().run()
-        })
+        }
     }
     
     func sendNextResponseChunk() {
@@ -119,10 +128,10 @@ class BluetoothManager: NSObject {
         if isSuccess {
             nChunksSent++
             if nChunksSent < nChunks {
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-                    usleep(25_000)
+                dispatch_async(responseChunkQueue) {
+                    usleep(10_000)
                     self.sendNextResponseChunk()
-                })
+                }
             } else {
                 let timeInterval = startTime.timeIntervalSinceNow
                 log("all chunks sent in \(-timeInterval) secs")
@@ -269,9 +278,9 @@ extension BluetoothManager: CBPeripheralManagerDelegate {
     
     func peripheralManagerIsReadyToUpdateSubscribers(peripheral: CBPeripheralManager!) {
         log("peripheralManagerIsReadyToUpdateSubscribers")
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+        dispatch_async(responseChunkQueue) {
             self.sendNextResponseChunk()
-        })
+        }
     }
     
 }
