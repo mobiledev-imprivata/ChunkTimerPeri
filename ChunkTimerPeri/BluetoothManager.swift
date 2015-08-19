@@ -81,44 +81,30 @@ class BluetoothManager: NSObject {
     }
     
     private func processRequest(requestBytes: [UInt8]) {
-//        let request = String(bytes: requestBytes, encoding: NSUTF8StringEncoding)!
-//        let response = request
-//        var responseBytes = [UInt8]()
-//        for codeUnit in response.utf8 {
-//            responseBytes.append(codeUnit)
-//        }
-        pendingResponseChunks = Chunker.makeChunks(requestBytes, chunkSize: chunkSize)
+        let request = String(bytes: requestBytes, encoding: NSUTF8StringEncoding)!
+        let response = "\(request) [\(timestamp())]"
+        var responseBytes = [UInt8]()
+        for codeUnit in response.utf8 {
+            responseBytes.append(codeUnit)
+        }
+        pendingResponseChunks = Chunker.makeChunks(responseBytes, chunkSize: chunkSize)
         nChunks = pendingResponseChunks.count
         nChunksSent = 0
-        log("pending response \(requestBytes.count) bytes (\(nChunks) chunks of \(chunkSize) bytes)")
-        startSendingResponseChunks()
+        log("pending response \(responseBytes.count) bytes (\(nChunks) chunks of \(chunkSize) bytes)")
+        
+        let delay = 20.0
+        let sendTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
+        
+        dispatch_after(sendTime, dispatch_get_main_queue()) {
+        // dispatch_async(dispatch_get_main_queue()) {
+            self.startTime = NSDate()
+            self.sendNextResponseChunk()
+        }
     }
     
-    private func startSendingResponseChunks() {
-        log("startSendingResponseChunks")
-        
+    private func sendNextResponseChunk() {
         if nChunks == 0 {
             return
-        }
-        
-        dispatch_async(responseChunkQueue) {
-            self.beginBackgroundTask()
-            
-            self.nChunksSent = 0
-            
-            let delay = 0.0 // self.calculateDelay()
-            let delayStr = String(format: "%.3f", delay)
-            log("will send response in \(delayStr) secs")
-            
-            let timer = NSTimer.scheduledTimerWithTimeInterval(delay, target: self, selector: "sendNextResponseChunk", userInfo: nil, repeats: false)
-            NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSDefaultRunLoopMode)
-            NSRunLoop.currentRunLoop().run()
-        }
-    }
-    
-    func sendNextResponseChunk() {
-        if nChunksSent == 0 {
-            startTime = NSDate()
         }
         let chunk = pendingResponseChunks[nChunksSent]
         log("sending chunk \(nChunksSent + 1)/\(nChunks) (\(pendingResponseChunks[nChunksSent].count) bytes)")
@@ -127,18 +113,16 @@ class BluetoothManager: NSObject {
         // log("isSuccess \(isSuccess)")
         if isSuccess {
             nChunksSent++
-            if nChunksSent < nChunks {
-                dispatch_async(responseChunkQueue) {
-                    usleep(10_000)
-                    self.sendNextResponseChunk()
-                }
-            } else {
+            if nChunksSent == nChunks {
                 let timeInterval = startTime.timeIntervalSinceNow
                 log("all chunks sent in \(-timeInterval) secs")
                 pendingResponseChunks.removeAll(keepCapacity: false)
                 nChunks = 0
                 nChunksSent = 0
-                self.endBackgroundTask()
+            } else {
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.sendNextResponseChunk()
+                }
             }
         } else {
             log("send failed, wait for BTLE callback")
@@ -278,7 +262,7 @@ extension BluetoothManager: CBPeripheralManagerDelegate {
     
     func peripheralManagerIsReadyToUpdateSubscribers(peripheral: CBPeripheralManager!) {
         log("peripheralManagerIsReadyToUpdateSubscribers")
-        dispatch_async(responseChunkQueue) {
+        dispatch_async(dispatch_get_main_queue()) {
             self.sendNextResponseChunk()
         }
     }
