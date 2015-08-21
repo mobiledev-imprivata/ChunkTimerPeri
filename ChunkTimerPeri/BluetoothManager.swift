@@ -30,14 +30,9 @@ class BluetoothManager: NSObject {
     
     private var uiBackgroundTaskIdentifier: UIBackgroundTaskIdentifier!
     
-    /*
-    dispatch_queue_create("responseChunkQueue", DISPATCH_QUEUE_SERIAL)
-    dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)
-    dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-    dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)
-    */
-    
-    private let responseChunkQueue = dispatch_queue_create("responseChunkQueue", DISPATCH_QUEUE_SERIAL)
+    private let immediateChunkQueue = dispatch_get_main_queue()
+    private let delayedChunkQueue = dispatch_queue_create("delayedChunkQueue", DISPATCH_QUEUE_SERIAL)
+    private var responseChunkQueue: dispatch_queue_t!
     
     // See:
     // http://stackoverflow.com/questions/24218581/need-self-to-set-all-constants-of-a-swift-class-in-init
@@ -92,19 +87,33 @@ class BluetoothManager: NSObject {
         nChunksSent = 0
         log("pending response \(responseBytes.count) bytes (\(nChunks) chunks of \(chunkSize) bytes)")
         
-        let delay = 20.0
-        let sendTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
+        let delay = 0.0
         
-        dispatch_after(sendTime, dispatch_get_main_queue()) {
-        // dispatch_async(dispatch_get_main_queue()) {
-            self.startTime = NSDate()
-            self.sendNextResponseChunk()
+        if delay == 0.0 {
+            log("immediate model")
+            responseChunkQueue = immediateChunkQueue
+            dispatch_async(responseChunkQueue) {
+                self.sendNextResponseChunk()
+            }
+        } else {
+            log("delayed model")
+            responseChunkQueue = delayedChunkQueue
+            dispatch_async(responseChunkQueue) {
+                self.beginBackgroundTask()
+                
+                let delayStr = String(format: "%.3f", delay)
+                log("will send response in \(delayStr) secs")
+                
+                let timer = NSTimer.scheduledTimerWithTimeInterval(delay, target: self, selector: "sendNextResponseChunk", userInfo: nil, repeats: false)
+                NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSDefaultRunLoopMode)
+                NSRunLoop.currentRunLoop().run()
+            }
         }
     }
     
-    private func sendNextResponseChunk() {
-        if nChunks == 0 {
-            return
+    func sendNextResponseChunk() {
+        if nChunksSent == 0 {
+            startTime = NSDate()
         }
         let chunk = pendingResponseChunks[nChunksSent]
         log("sending chunk \(nChunksSent + 1)/\(nChunks) (\(pendingResponseChunks[nChunksSent].count) bytes)")
@@ -113,16 +122,17 @@ class BluetoothManager: NSObject {
         // log("isSuccess \(isSuccess)")
         if isSuccess {
             nChunksSent++
-            if nChunksSent == nChunks {
+            if nChunksSent < nChunks {
+                dispatch_async(responseChunkQueue) {
+                    self.sendNextResponseChunk()
+                }
+            } else {
                 let timeInterval = startTime.timeIntervalSinceNow
                 log("all chunks sent in \(-timeInterval) secs")
                 pendingResponseChunks.removeAll(keepCapacity: false)
                 nChunks = 0
                 nChunksSent = 0
-            } else {
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.sendNextResponseChunk()
-                }
+                self.endBackgroundTask()
             }
         } else {
             log("send failed, wait for BTLE callback")
@@ -160,9 +170,11 @@ class BluetoothManager: NSObject {
     private func endBackgroundTask() {
         log("endBackgroundTask")
         log("uiBackgroundTaskIdentifier \(uiBackgroundTaskIdentifier)")
-        backgroundTimeRemaining()
-        UIApplication.sharedApplication().endBackgroundTask(uiBackgroundTaskIdentifier)
-        uiBackgroundTaskIdentifier = UIBackgroundTaskInvalid
+        if uiBackgroundTaskIdentifier != nil && uiBackgroundTaskIdentifier != UIBackgroundTaskInvalid {
+            backgroundTimeRemaining()
+            UIApplication.sharedApplication().endBackgroundTask(uiBackgroundTaskIdentifier)
+            uiBackgroundTaskIdentifier = UIBackgroundTaskInvalid
+        }
     }
     
     private func endBackgroundTaskExpirationHandler() {
@@ -262,7 +274,7 @@ extension BluetoothManager: CBPeripheralManagerDelegate {
     
     func peripheralManagerIsReadyToUpdateSubscribers(peripheral: CBPeripheralManager!) {
         log("peripheralManagerIsReadyToUpdateSubscribers")
-        dispatch_async(dispatch_get_main_queue()) {
+        dispatch_async(responseChunkQueue) {
             self.sendNextResponseChunk()
         }
     }
