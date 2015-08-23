@@ -91,22 +91,12 @@ class BluetoothManager: NSObject {
         nChunks = pendingResponseChunks.count
         nChunksSent = 0
         log("pending response \(requestBytes.count) bytes (\(nChunks) chunks of \(chunkSize) bytes)")
-        startSendingResponseChunks()
-    }
-    
-    private func startSendingResponseChunks() {
-        log("startSendingResponseChunks")
         
-        if nChunks == 0 {
-            return
-        }
+        let delay = 20.0
         
         dispatch_async(responseChunkQueue) {
             self.beginBackgroundTask()
             
-            self.nChunksSent = 0
-            
-            let delay = 0.0 // self.calculateDelay()
             let delayStr = String(format: "%.3f", delay)
             log("will send response in \(delayStr) secs")
             
@@ -129,7 +119,6 @@ class BluetoothManager: NSObject {
             nChunksSent++
             if nChunksSent < nChunks {
                 dispatch_async(responseChunkQueue) {
-                    usleep(10_000)
                     self.sendNextResponseChunk()
                 }
             } else {
